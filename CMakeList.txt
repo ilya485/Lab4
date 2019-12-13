@@ -1,0 +1,14 @@
+cc=g++
+cflags=
+
+rule compile 
+  command = $cc $cflags -c $in -o $out
+
+rule link
+  command = $cc $in -o $out
+
+build calculator.o: compile calculator.cpp
+build main.o: compile main.cpp
+build main: link calculator.o main.o
+
+default main
